@@ -126,9 +126,11 @@ public class VectorBenchmarks {
       double[] values = new double[numNonZeros];
       int j = 0;
       while (j < numNonZeros) {
-        double value = r.nextGaussian();
+        //double value = r.nextGaussian();
         int index = r.nextInt(cardinality);
-        if (!featureSpace.get(index) && value != 0) {
+        float value = (float) r.nextGaussian();
+        if (!featureSpace.get(index) && Float.floatToRawIntBits(value) != 0){
+        //if (!featureSpace.get(index) && value != 0) {
           featureSpace.set(index);
           indexes[j] = index;
           values[j++] = value;
