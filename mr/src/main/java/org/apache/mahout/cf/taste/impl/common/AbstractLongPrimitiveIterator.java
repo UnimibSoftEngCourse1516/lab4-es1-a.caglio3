@@ -17,10 +17,15 @@
 
 package org.apache.mahout.cf.taste.impl.common;
 
+import java.util.NoSuchElementException;
+
 public abstract class AbstractLongPrimitiveIterator implements LongPrimitiveIterator {
   
   @Override
   public Long next() {
+	  if(!hasNext()){
+		  throw new NoSuchElementException();
+	  }
     return nextLong();
   }
   
