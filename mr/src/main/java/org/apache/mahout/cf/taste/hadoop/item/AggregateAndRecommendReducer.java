@@ -206,7 +206,7 @@ public final class AggregateAndRecommendReducer extends
     }
   }
 
-  private boolean shouldIncludeItemIntoRecommendations(long itemID, FastIDSet allItemsToRecommendFor,
+  private static boolean shouldIncludeItemIntoRecommendations(long itemID, FastIDSet allItemsToRecommendFor,
                                                        FastIDSet itemsForUser) {
     if (allItemsToRecommendFor == null && itemsForUser == null) {
       return true;
