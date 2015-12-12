@@ -79,7 +79,7 @@ public class IDReader {
    * 
    * @throws IllegalStateException if userItemFile option is specified together with usersFile or itemsFile
    */
-  public void readIDs() throws IOException, IllegalStateException {
+  public void readIDs() throws IOException {
     if (isUserItemFileSpecified()) {
       readUserItemFilterIfNeeded();
     }
@@ -109,7 +109,7 @@ public class IDReader {
     }
   }
 
-  private void readUserIds() throws IOException, IllegalStateException {
+  private void readUserIds() throws IOException {
     if (isUsersFileSpecified() && !isUserItemFileSpecified()) {
       userIds = readIDList(usersFile);
     } else if (isUserItemFileSpecified() && !isUsersFileSpecified()) {
@@ -122,7 +122,7 @@ public class IDReader {
     }
   }
 
-  private void readItemIds() throws IOException, IllegalStateException {
+  private void readItemIds() throws IOException {
     if (isItemsFileSpecified() && !isUserItemFileSpecified()) {
       itemIds = readIDList(itemsFile);
     } else if (isUserItemFileSpecified() && !isItemsFileSpecified()) {
@@ -184,7 +184,7 @@ public class IDReader {
     return result;
   }
 
-  private FastIDSet extractAllItemIdsFromUserItemFilter(Map<Long, FastIDSet> filter) {
+  private static FastIDSet extractAllItemIdsFromUserItemFilter(Map<Long, FastIDSet> filter) {
     FastIDSet result = new FastIDSet();
 
     for (FastIDSet itemIds : filter.values()) {
